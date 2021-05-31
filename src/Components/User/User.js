@@ -6,18 +6,19 @@ const User = () => {
     const { userID } = useParams();
     const [user, setUser] = useState({})
     const [userPost, setUserpost] = useState([])
+    // This useEffect only show user
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
-
+// This useEffect only show user all post
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
             .then(res => res.json())
             .then(data => setUserpost(data))
     }, [])
-console.log(userPost)
+    console.log(userPost)
     return (
         <section className="container">
             <Navbar></Navbar>
@@ -37,7 +38,6 @@ console.log(userPost)
                         </div>
                     )
                 }
-
             </div>
         </section>
     );
