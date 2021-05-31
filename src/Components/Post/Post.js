@@ -13,7 +13,7 @@ const Post = () => {
     }, [])
 
     return (
-        <div>
+        <section>
             <Navbar></Navbar>
             <h2>Single post{postId}</h2>
             <ul class="list-group">
@@ -22,7 +22,7 @@ const Post = () => {
                     <p>{post.body}</p>
                 </li>
             </ul>
-        </div>
+        </section>
     );
 };
 
