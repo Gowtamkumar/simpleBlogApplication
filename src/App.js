@@ -12,6 +12,7 @@ import Home from './Components/Home/Home';
 import Posts from './Components/Posts/Posts';
 import User from './Components/User/User';
 import Post from './Components/Post/Post';
+import NewPost from './Components/NewPost/NewPost';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/post/:postId">
             <Post />
+          </Route>
+          <Route path="/newpost">
+            <NewPost />
           </Route>
 
 

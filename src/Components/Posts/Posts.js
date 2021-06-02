@@ -25,14 +25,14 @@ const Posts = () => {
     console.log("fff", limit)
     return (
         <section className="container-fluid mt-4">
-          
+
             <div className="row">
                 {
                     posts.slice(0, limit).map((postdata) =>
                         <div className="col-md-12" key={postdata.id}>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    
+
                                     <p>
                                         <Link to={`/user/${postdata.userId}`}>User: {postdata.userId}</Link>
                                     </p>
