@@ -26,26 +26,28 @@ const User = () => {
             .then(res => res.json())
             .then(data => setUserpost(data))
     }, [])
-    console.log(user.id)
 
-
-
-
+    // Delete oparation start
     const postDelete = (id) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id.id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                console.log("Delete Successfull")
+
+                alert("Delete Successfull")
+                const postDelete = userPost.filter(p => p.id === data.id)
+                setUserpost(postDelete)
+
             })
-        console.log(id)
+
     }
+    // Delete oparation start
 
     // new Post Start
     const SinglePostAdd = () => {
-        const SinglePostTitle = document.getElementById("postUpdateTitle").value
-        const SinglePostbody = document.getElementById("postupdateBody").value
+        const SinglePostTitle = document.getElementById("newpostTitle").value
+        const SinglePostbody = document.getElementById("newpostBody").value
 
         fetch(`https://jsonplaceholder.typicode.com/posts`, {
             method: 'POST',
@@ -66,7 +68,7 @@ const User = () => {
 
 
 
-    // UPdate start
+    // Update oparation start
     const postUpdate = (id) => {
 
         // Post Update form
@@ -75,26 +77,38 @@ const User = () => {
             .then(data => setPostupdate(data))
     }
 
-    const SinglePostUpdate = (id) => {
+    const SinglePostUpdate = (post) => {
         const SinglePostTitle = document.getElementById("postUpdateTitle").value
         const SinglePostbody = document.getElementById("postupdateBody").value
+        console.log(post.userId)
 
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-            method: 'PATCH',
+        fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
+            method: 'PUT',
             body: JSON.stringify({
-                title: SinglePostTitle,
-                body: SinglePostbody
+                // userId: post.userId,
+                // id: post.id,
+                title: "SinglePostTitle",
+                body: 'SinglePostbody',
+
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
             .then((response) => response.json())
-            .then((data) => setUserpost([data, ...userPost]));
-    }
-    // UPdate end
+            .then((data) => {
+                const postupdater = [...userPost]
+                const index = postupdater.indexOf(data)
+                postupdater[index] = { data }
+                setUserpost(postupdater)
+                alert("index3")
+            }
 
-    console.log("lksjdflasdkfjlka", postupdate)
+            );
+    }
+    // Update oparation end
+
+
     return (
         <section className="container">
             <Navbar></Navbar>
@@ -107,10 +121,10 @@ const User = () => {
 
 
                     {/*Button trigger modal*/}
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add New Post</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalupdate" >Add New Post</button>
 
                     {/* Modal*/}
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -121,10 +135,10 @@ const User = () => {
                                 <form> {/* post update form */}
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="postUpdateTitle" />
+                                            <input type="text" class="form-control" id="newpostTitle" />
                                         </div>
                                         <div class="mb-3">
-                                            <textarea type="text" class="form-control" id="postupdateBody" placeholder="Another input placeholder" />
+                                            <textarea type="text" class="form-control" id="newpostBody" placeholder="Another input placeholder" />
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -135,19 +149,6 @@ const User = () => {
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-                    {/* <button className="btn btn-success ">
-                        <Link to="/newpost" className="text-light">Add New Post</Link>
-                    </button> */}
-
-
 
 
                 </div>
@@ -164,7 +165,7 @@ const User = () => {
 
                                     <button
                                         className="btn btn-success"
-                                        onClick={() => postDelete(UserPostData.id)}
+                                        onClick={() => postDelete(UserPostData)}
                                     >Delete</button>
 
 
@@ -193,7 +194,7 @@ const User = () => {
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary" onClick={() => SinglePostUpdate(UserPostData.id)}>Update</button>
+                                                        <button type="button" class="btn btn-primary" onClick={() => SinglePostUpdate(postupdate)}>Send</button>
                                                     </div>
                                                 </form>{/* post update form end*/}
                                             </div>
