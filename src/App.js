@@ -6,23 +6,18 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import About from './Components/About/About';
-import Users from './Components/Users/Users';
 import Home from './Components/Home/Home';
-import Posts from './Components/Posts/Posts';
 import User from './Components/User/User';
 import Post from './Components/Post/Post';
 import NewPost from './Components/NewPost/NewPost';
+import Users from './Components/Users/Users';
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          
+         
       
           <Route path="/user/:userID">
           <User />
@@ -32,6 +27,9 @@ function App() {
           </Route>
           <Route path="/newpost">
             <NewPost />
+          </Route>
+          <Route path="/users">
+            <Users/>
           </Route>
 
 
