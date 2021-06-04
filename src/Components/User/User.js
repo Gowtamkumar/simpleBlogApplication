@@ -7,7 +7,7 @@ const User = () => {
     const [user, setUser] = useState({})
     const [userPost, setUserpost] = useState([])
     const [postupdate, setPostupdate] = useState({})
-
+console.log("ffffffff",userPost)
     // This useEffect only show user
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
@@ -62,18 +62,16 @@ const User = () => {
     }
 
     const SinglePostUpdate = (post) => {
-        const SinglePostTitleupdate = document.getElementById("postUpdateTitle").value
-        const SinglePostbodyupdate = document.getElementById("postupdateBody").value
-        console.log(post.userId)
+        const SinglePostTitle = document.getElementById("postUpdateTitle").value
+        const SinglePostbody = document.getElementById("postupdateBody").value
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 // userId: post.userId,
                 // id: post.id,
-                title: "SinglePostTitleupdate",
-                body: 'SinglePostbodyupdate',
-
+                title: SinglePostTitle,
+                body: SinglePostbody
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
@@ -89,7 +87,7 @@ const User = () => {
             });
     }
     // Update oparation end
-    
+
     // style={{ width: '18rem' }}
     return (
         <section className="container">
