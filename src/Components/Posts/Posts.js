@@ -24,32 +24,32 @@ const Posts = () => {
     };
     console.log("fff", limit)
     return (
-        <section className="container-fluid mt-4">
+        <section className="container mt-4">
 
             <div className="row">
-                {
-                    posts.slice(0, limit).map((postdata) =>
-                        <div className="col-md-12" key={postdata.id}>
-                            <ul class="list-group">
-                                <li class="list-group-item">
+                {posts.slice(0, limit).map((postdata) =>
+                    <div className="col-md-12 mt-3" key={postdata.id}>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div className="row">
+                                    <div className="col-md-7">
+                                        <p><Link to={`/user/${postdata.userId}`}>User: {postdata.userId}</Link></p>
+                                        <h3><Link to={`/post/${postdata.id}`}>{postdata.title}</Link> </h3>
+                                        <p className="text-justify">{postdata.body}</p>
 
-                                    <p>
-                                        <Link to={`/user/${postdata.userId}`}>User: {postdata.userId}</Link>
-                                    </p>
-                                    <h3>
-                                        <Link to={`/post/${postdata.id}`}>{postdata.title}</Link>
-                                    </h3>
-                                    <p>{postdata.body}</p>
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                }
-                <div class="d-grid gap-2 mb-3">
-                    <button class="btn btn-primary" type="button"
-                        onClick={handleShowMore}
+                                        <Link to={`/post/${postdata.id}`} className="text-light"><button className="btn btn-success ">Read More</button></Link>
 
-                    >Load More</button>
+                                    </div>
+                                    <div className="col-md-5">
+                                        <img src="https://i.ibb.co/N3kh5vj/fitness-trainer.jpg" alt="" className="img-fluid" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                )}
+                <div class="d-grid gap-2 mb-3 mt-4">
+                    <button class="btn btn-primary" type="button" onClick={handleShowMore}>Load More</button>
                 </div>
             </div>
         </section>

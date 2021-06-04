@@ -14,7 +14,7 @@ const Users = () => {
     console.log(users)
     const columns = [
         { title: "Name", field: "name", render: rowData => <Link to={`/user/${rowData.id}`}>{rowData.name}</Link> },
-        { title: "email", field: 'email' },
+        { title: "Email", field: 'email' },
         { title: "Website", field: 'website' }
     ]
     return (
@@ -30,8 +30,6 @@ const Users = () => {
                     }}
                 />
             </div>
-
-
         </section>
     );
 };
