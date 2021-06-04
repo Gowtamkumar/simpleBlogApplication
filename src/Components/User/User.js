@@ -13,13 +13,13 @@ const User = () => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
             .then(res => res.json())
             .then(data => setUser(data))
-    }, [])
+    }, [userID])
     // This useEffect only show user all post
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
             .then(res => res.json())
             .then(data => setUserpost(data))
-    }, [])
+    }, [userID])
 
     // Delete oparation start
     const postDelete = (id) => {
@@ -62,8 +62,8 @@ const User = () => {
     }
 
     const SinglePostUpdate = (post) => {
-        const SinglePostTitle = document.getElementById("postUpdateTitle").value
-        const SinglePostbody = document.getElementById("postupdateBody").value
+        const SinglePostTitleupdate = document.getElementById("postUpdateTitle").value
+        const SinglePostbodyupdate = document.getElementById("postupdateBody").value
         console.log(post.userId)
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}`, {
@@ -71,8 +71,8 @@ const User = () => {
             body: JSON.stringify({
                 // userId: post.userId,
                 // id: post.id,
-                title: "SinglePostTitle",
-                body: 'SinglePostbody',
+                title: "SinglePostTitleupdate",
+                body: 'SinglePostbodyupdate',
 
             }),
             headers: {
@@ -89,7 +89,7 @@ const User = () => {
             });
     }
     // Update oparation end
-    console.log("dddddddddd", user)
+    
     // style={{ width: '18rem' }}
     return (
         <section className="container">
