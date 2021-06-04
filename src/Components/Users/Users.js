@@ -1,4 +1,3 @@
-import { getAllByAltText } from '@testing-library/dom';
 import MaterialTable from 'material-table';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,7 +10,7 @@ const Users = () => {
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
-    console.log(users)
+
     const columns = [
         { title: "Name", field: "name", render: rowData => <Link to={`/user/${rowData.id}`}>{rowData.name}</Link> },
         { title: "Email", field: 'email' },
