@@ -4,7 +4,7 @@ import { PostContext } from '../../App';
 import Navbar from '../Sheard/Navbar/Navbar';
 
 const User = () => {
-    const { userID } = useParams();
+    let { userID } = useParams();
     const [user, setUser] = useState({})
     const [userPost, setUserpost] = useContext(PostContext)
     const [postupdate, setPostupdate] = useState({})
@@ -14,18 +14,17 @@ const User = () => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
             .then(res => res.json())
             .then(data => setUser(data))
-
+    }, [userID])
+    // This useEffect only show user all post
+    useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
             .then(res => res.json())
             .then(data => setUserpost(data))
     }, [userID])
-    // This useEffect only show user all post
-
-
-
 
     // Delete oparation start
     const postDelete = (id) => {
+
         fetch(`https://jsonplaceholder.typicode.com/posts/${id.id}`, {
             method: 'DELETE',
         })
@@ -34,6 +33,7 @@ const User = () => {
                 const postDelete = userPost.filter(postdelete => postdelete.id !== id.id)
                 setUserpost(postDelete)
             })
+
     }
     // Delete oparation start
     // new Post Start
