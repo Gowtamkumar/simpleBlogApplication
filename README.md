@@ -1,5 +1,8 @@
-Project
-Your responsibility is to use the JSON placeholder API and make a blog-like simple web
+Project name: Simple Blog Application
+Project Code Link: https://github.com/Gowtamkumar/simpleBlogApplication
+Project Live link: https://simpleblogapplication-66e62.web.app/
+Project Description:
+ JSON placeholder API and make a blog-like simple web
 application using ReactJS. You will use the following API endpoints:
 ● Posts
 ● Comments
