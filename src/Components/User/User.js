@@ -9,19 +9,19 @@ const User = () => {
     const [userPost, setUserpost] = useContext(PostContext)
     const [postupdate, setPostupdate] = useState({})
 
-      // This useEffect only show user all post
-      useEffect(() => {
+    // This useEffect only show user all post
+    useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
             .then(res => res.json())
             .then(data => setUserpost(data))
-    });
+    },[userID]);
 
     // This useEffect only show user
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
             .then(res => res.json())
             .then(data => setUser(data))
-    }, [userID]);
+    },[userID]);
 
 
     // Delete oparation start
@@ -157,7 +157,7 @@ const User = () => {
                     <div className="col-md-12" key={UserPostData.id}>
                         <ul className="list-group">
                             {/* Single user post show */}
-                            <li className="list-group-item p-4">
+                            <li className="list-group-item p-4 mt-3">
                                 <h3>{UserPostData.title}</h3>
                                 <p>{UserPostData.body}</p>
                                 {/* single post delete button */}
