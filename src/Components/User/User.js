@@ -7,7 +7,7 @@ const User = () => {
     const [user, setUser] = useState({})
     const [userPost, setUserpost] = useState([])
     const [postupdate, setPostupdate] = useState({})
-console.log("ffffffff",userPost)
+    console.log("ffffffff", userPost)
     // This useEffect only show user
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
@@ -23,13 +23,14 @@ console.log("ffffffff",userPost)
 
     // Delete oparation start
     const postDelete = (id) => {
+        console.log("post delete", id)
         fetch(`https://jsonplaceholder.typicode.com/posts/${id.id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-                alert("Delete Successfull")
-                const postDelete = userPost.filter(p => p.id === data.id)
+
+                const postDelete = userPost.filter(postdelete => postdelete.id !== id.id)
                 setUserpost(postDelete)
             })
     }
@@ -80,8 +81,8 @@ console.log("ffffffff",userPost)
             .then((response) => response.json())
             .then((data) => {
                 const postupdater = [...userPost]
-                const index = postupdater.indexOf(data)
-                postupdater[index] = { data }
+                const index = postupdater.indexOf(post)
+                postupdater[index] = { post }
                 setUserpost(postupdater)
                 alert("Update Successfully")
             });
