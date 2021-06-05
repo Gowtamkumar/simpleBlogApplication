@@ -16,11 +16,11 @@ const User = () => {
             .then(data => setUser(data))
     }, [userID])
     // This useEffect only show user all post
-    useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
-            .then(res => res.json())
-            .then(data => setUserpost(data))
-    }, [userID])
+
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
+        .then(res => res.json())
+        .then(data => setUserpost(data))
+
 
     // Delete oparation start
     const postDelete = (id) => {

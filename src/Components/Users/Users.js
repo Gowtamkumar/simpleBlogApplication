@@ -20,6 +20,7 @@ const Users = () => {
         <section className="container ">
             <Navbar></Navbar>
             <div className="mt-5">
+                {/* All user Data show */}
                 <MaterialTable title="All Users List"
                     data={users}
                     columns={columns}

@@ -22,6 +22,7 @@ const Post = () => {
     return (
         <section className="container">
             <Navbar></Navbar>
+            {/* Post Details */}
             <div className="mt-5">
                 <ul class="list-group">
                     <li class="list-group-item">

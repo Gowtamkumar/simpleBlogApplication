@@ -13,9 +13,7 @@ const Posts = () => {
             .then(data => setPosts(data))
     }, [limit])
     // console.log(post.splice(0, 10))
-    console.log(posts)
-
-
+   
     const handleShowMore = () => {
         if (limit <= max) {
             let newLimit = limit + 10;
@@ -25,7 +23,7 @@ const Posts = () => {
     console.log("fff", limit)
     return (
         <section className="container mt-4">
-
+            {/* All Post data show */}
             <div className="row">
                 {posts.slice(0, limit).map((postdata) =>
                     <div className="col-md-12 mt-3" key={postdata.id}>
