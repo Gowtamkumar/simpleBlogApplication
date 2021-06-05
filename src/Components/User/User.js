@@ -6,7 +6,6 @@ import Navbar from '../Sheard/Navbar/Navbar';
 const User = () => {
     const { userID } = useParams();
     const [user, setUser] = useState({})
-    // const [userPost, setUserpost] = useState([])
     const [userPost, setUserpost] = useContext(PostContext)
     const [postupdate, setPostupdate] = useState({})
 
@@ -25,13 +24,11 @@ const User = () => {
 
     // Delete oparation start
     const postDelete = (id) => {
-        console.log("post delete", id)
         fetch(`https://jsonplaceholder.typicode.com/posts/${id.id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(data => {
-
                 const postDelete = userPost.filter(postdelete => postdelete.id !== id.id)
                 setUserpost(postDelete)
             })
@@ -91,7 +88,6 @@ const User = () => {
     }
     // Update oparation end
 
-    // style={{ width: '18rem' }}
     return (
         <section className="container">
             <Navbar></Navbar>
