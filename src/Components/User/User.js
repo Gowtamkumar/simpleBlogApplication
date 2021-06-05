@@ -20,7 +20,7 @@ const User = () => {
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
             .then(res => res.json())
             .then(data => setUserpost(data))
-    }, [userID])
+    }, [])
 
     // Delete oparation start
     const postDelete = (id) => {
