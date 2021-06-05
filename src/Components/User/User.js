@@ -14,12 +14,14 @@ const User = () => {
         fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
             .then(res => res.json())
             .then(data => setUser(data))
+
+        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
+            .then(res => res.json())
+            .then(data => setUserpost(data))
     }, [userID])
     // This useEffect only show user all post
 
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`)
-        .then(res => res.json())
-        .then(data => setUserpost(data))
+
 
 
     // Delete oparation start
